@@ -4,4 +4,4 @@ const TaskSchema = new mongoose.Schema({
     name:String,completed:Boolean
 })
 
-module.exports = mongoose.models('Task', TaskSchema)
+module.exports = mongoose.model('Task', TaskSchema)
