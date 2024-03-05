@@ -1,10 +1,21 @@
 const express = require('express')
 const app = express()
 
+const tasks = require('./routes/tasks')
+
+//port for server
 const port = 3000
+
+//Middlware
+//sending json
+app.use(express.json())
+//add the root/base route
+app.use('/api/v1/tasks', tasks)
+
 app.get('/hello', (req, res) => {
     res.send("we made it")
 })
+
 
 
 
