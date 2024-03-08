@@ -1,27 +1,21 @@
 
 const express = require('express')
 const app = express()
-
 const tasks = require('./routes/tasks')
 const connectDB = require('./db/connect')
 require('dotenv').config()
 
-
-//port for server
-const port = 3000
-
 //Middlware
+
+app.use(express.static('./public'))
 //sending json
 app.use(express.json())
 //add the root/base route
 app.use('/api/v1/tasks', tasks)
 
-app.get('/hello', (req, res) => {
-    res.send("we made it")
-})
-
-
-
+// app.get('/hello', (req, res) => {
+//     res.send("we made it")
+// })
 
 // app.get('/api/v1/tasks')          - get all tasks
 // app.post('/api/v1/tasks')         - create new task
@@ -29,7 +23,8 @@ app.get('/hello', (req, res) => {
 // app.patch('/api/v1/tasks/:id')    - update task
 // app.delete('/api/v1/tasks/:id')   - delete task
 
-
+//port for server
+const port = 3000
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
